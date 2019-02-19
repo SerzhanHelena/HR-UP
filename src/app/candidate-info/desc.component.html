@@ -1,0 +1,100 @@
+<div class="row">
+  <form class="col s12" [formGroup]="candidateInfoForm">
+
+    <div [ngSwitch]="mode">
+      <div *ngSwitchCase="'view'" class="view-mode">
+        <label for="first-name1">First Name</label>
+        <h5 id="first-name1">{{ candidateData.candidateName }}</h5>
+      </div>
+      <div *ngSwitchDefault>
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="first-name2">First Name</label>
+            <input id="first-name2" type="text" class="validate" formControlName="firstName"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div [ngSwitch]="mode">
+      <div *ngSwitchCase="'view'" class="view-mode">
+        <label for="last-name1">Last Name</label>
+        <h5 id="last-name1">{{ candidateData.candidateSurname }}</h5>
+      </div>
+      <div *ngSwitchDefault>
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="last-name2">Last Name</label>
+            <input id="last-name2" type="text" class="validate" formControlName="lastName"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div [ngSwitch]="mode">
+      <div *ngSwitchCase="'view'" class="view-mode">
+        <label for="position">Position</label>
+        <h5 id="position">{{ candidateData.position }}</h5>
+      </div>
+      <div *ngSwitchDefault>
+        <div class="row">
+          <div class="input-field col s12">
+            <select formControlName="position">
+              <option selected disabled>Choose position</option>
+              <option *ngFor="let pos of positions">{{pos}}</option>
+            </select>
+          </div>
+        </div><br>
+      </div>
+    </div>
+
+    <div [ngSwitch]="mode">
+      <div *ngSwitchCase="'view'" class="view-mode">
+        <label for="phone1">Phone</label>
+        <h5 id="phone1">{{ candidateData.phone }}</h5>
+      </div>
+      <div *ngSwitchDefault>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="phone2" type="text" class="validate" formControlName="phone" />
+            <label for="phone2">Phone</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div [ngSwitch]="mode">
+      <div *ngSwitchCase="'view'" class="view-mode">
+        <label for="mail1">Mail</label>
+        <h5 id="mail1">{{ candidateData.mail }}</h5>
+      </div>
+      <div *ngSwitchDefault>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="mail2" type="email" class="validate" formControlName="mail" />
+            <label for="mail2">Mail</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div [ngSwitch]="mode">
+      <div *ngSwitchCase="'view'" class="view-mode">
+        <label for="other-contacts1">Other contacts</label>
+        <h5 id="other-contacts1">{{ candidateData.otherContacts }}</h5>
+      </div>
+      <div *ngSwitchDefault>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="other-contacts2" type="text" class="validate" formControlName="otherContacts" />
+            <label for="other-contacts2">Other contacts</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [ngSwitch]="mode">
+      <button *ngSwitchCase="'view'" class="waves-effect waves-light btn">Edit</button>
+      <button *ngSwitchDefault class="waves-effect waves-light btn" (click)="createNewCandidate()">Save</button>
+    </div>
+  </form>
+</div>

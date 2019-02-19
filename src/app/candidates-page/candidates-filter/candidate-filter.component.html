@@ -1,0 +1,16 @@
+<div class="filter">
+  <h4>Filter of candidates:</h4>
+
+  <form class="filter-form" #positionsForm="ngForm">
+    <br>
+    <label *ngFor="let pos of positions">
+      <input type="checkbox" (click)="filteredPositions.push(pos)" [checked]="isChecked"/>
+      <span>{{pos}}</span>
+      <br>
+    </label>
+
+
+    <button class="waves-effect waves-light btn mrg-1" (click)="filterCandidates()">Apply</button>
+    <button class="waves-effect waves-light btn mrg" (click)="resetCandidates()">Reset</button>
+  </form>
+</div>

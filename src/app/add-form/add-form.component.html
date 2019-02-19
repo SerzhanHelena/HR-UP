@@ -1,0 +1,147 @@
+<table class="table table-borderless" *ngIf="!destroyed && form.controls.hasOwnProperty('when')
+                                          && form.controls.hasOwnProperty('whoConducts')
+                                          && form.controls.hasOwnProperty('comments')">
+  <tr>
+    <td *ngIf="!canInput">{{currentDate}}</td>
+    <td>
+      <div class="col-xs-8 col-xs-offset-2">
+        <h4>Interview</h4>
+        <form [formGroup]="form">
+          <div class="form-row">
+            <div class="col">
+              <label>When:</label>
+            </div>
+            <p-calendar id="datepicket-set-interview" [disabled]="!canInput" [(ngModel)]="selectedDate" dateFormat="dd/mm/yy"  [showIcon]="true" showTime="true" [ngModelOptions]="{standalone: true}"></p-calendar>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <label>Who conducts:</label>
+            </div>
+            <tag-input
+                        placeholder="+ interviewer"
+                        id="interviewerSelect" 
+                        [(disabled)]="!canInput"
+                       [maxItems]="3"
+                       [(ngModel)]="interviewers"
+                       secondaryPlaceholder=""
+                       [ngModelOptions]="{standalone: true}">
+              <tag-input-dropdown [autocompleteItems]="people">
+              </tag-input-dropdown>
+            </tag-input>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea11">Comments:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea11" rows="3" formControlName="comments"
+                      [readonly]="!canInput" [(ngModel)]="notes"></textarea>
+          </div>
+          <button *ngIf="canInput" class="btn btn-primary" (click)="saveEdit()">Save</button>
+          <button *ngIf="!canInput" class="btn btn-primary" (click)="saveEdit()">Edit</button>
+          <button class="delete icon" (click)="deleteItem()">
+            <i class="material-icons">delete</i>
+          </button>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<table class="table table-borderless" *ngIf="form.controls.hasOwnProperty('companyName')
+                                          && form.controls.hasOwnProperty('yearsOfWork')
+                                          && form.controls.hasOwnProperty('position')
+                                          && form.controls.hasOwnProperty('comments')">
+  <tr>
+    <td *ngIf="!canInput">{{currentDate}}</td>
+    <td>
+      <div class="col-xs-8 col-xs-offset-2">
+        <h4>Experience</h4>
+        <form [formGroup]="form">
+
+          <div class="form-row">
+            <div class="col">
+              <label>Company name:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="companyName" [readonly]="!canInput">
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <label>Years of work:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="yearsOfWork" [readonly]="!canInput">
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <label>Position:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="position" [readonly]="!canInput">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea12">Comments:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea12" rows="3" formControlName="comments"
+                      [readonly]="!canInput"></textarea>
+          </div>
+
+          <button *ngIf="canInput" class="btn btn-primary" (click)="saveEdit()">Save</button>
+          <button *ngIf="!canInput" class="btn btn-primary" (click)="saveEdit()">Edit</button>
+          <button class="delete icon" (click)="deleteItem()">
+            <i class="material-icons">delete</i>
+          </button>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<table class="table table-borderless" *ngIf="form.controls.hasOwnProperty('when')
+                                          && form.controls.hasOwnProperty('author')
+                                          && form.controls.hasOwnProperty('note')">
+  <tr>
+    <td *ngIf="!canInput">{{currentDate}}</td>
+    <td>
+      <div class="col-xs-8 col-xs-offset-2">
+        <h4>Note</h4>
+        <form [formGroup]="form">
+
+          <div class="form-row">
+            <div class="col">
+              <label>When:</label>
+            </div>
+            <p-calendar [disabled]="!canInput" [(ngModel)]="selectedDate" dateFormat="dd/mm/yy"  [showIcon]="true" showTime="true" [ngModelOptions]="{standalone: true}"></p-calendar>
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <label>Author:</label>
+            </div>
+           <tag-input
+              [(disabled)]="!canInput"
+              id="interviewerSelect2"
+              [maxItems]="3"
+              [(ngModel)]="interviewers"
+              secondaryPlaceholder=""
+              placeholder="+ interviewer"
+              [ngModelOptions]="{standalone: true}">
+              <tag-input-dropdown [autocompleteItems]="people">
+              </tag-input-dropdown>
+            </tag-input>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea13">Note:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea13" rows="3" formControlName="note"
+                      [readonly]="!canInput"></textarea>
+          </div>
+
+          <button *ngIf="canInput" class="btn btn-primary" (click)="saveEdit()">Save</button>
+          <button *ngIf="!canInput" class="btn btn-primary" (click)="saveEdit()">Edit</button>
+          <button class="delete icon" (click)="deleteItem()">
+            <i class="material-icons">delete</i>
+          </button>
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>
+

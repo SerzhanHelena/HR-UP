@@ -1,0 +1,29 @@
+<table class="table table-borderless">
+  <tr>
+    <td>
+      <div class="col-xs-8 col-xs-offset-2">
+        <form>
+
+          <div class="form-row">
+            <h4>{{ vacancy.vacancyName }}</h4>
+            <button [routerLink]="['/create-vacancy']" class="btn btn-primary">More info</button>
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <label>Vacancy status: {{ vacancy.vacancyStatus }}</label>
+            </div>
+          </div>
+          <hr>
+          <div class="form-row">
+            <div class="col">
+              <label class="col-form-label-lg">Candidates:</label>
+              <app-candidate-short-info *ngFor="let item of vacancy.candidates" [candidate]="item"></app-candidate-short-info>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </td>
+  </tr>
+</table>

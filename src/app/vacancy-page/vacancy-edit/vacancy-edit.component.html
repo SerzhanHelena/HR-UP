@@ -1,0 +1,118 @@
+<h1 mat-dialog-title>{{ data.dialogTitle }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="vacancyEdit">
+
+    <div [ngSwitch]="data.dialogMode">
+      <h4 *ngSwitchCase="'readEdit'">{{ vacancyEdit.get('vacancyName').value }}</h4>
+      <input *ngSwitchCase="'create'" type="text" [readonly]='isInactive' placeholder="vacancy name"
+             formControlName="vacancyName" id="vacancy-name" class="input-group-text">
+    </div>
+
+    <br>
+
+    <h5 for="vacancy-status">Vacancy status: </h5>
+    <div [ngSwitch]="data.dialogMode">
+      <h6 *ngSwitchCase="'readEdit'">{{ vacancyEdit.get('vacancyStatus').value }}</h6>
+      <select *ngSwitchCase="'create'" id="vacancy-status" class="input-group-text" formControlName="vacancyStatus">
+        <option [disabled]="isInactive">opened</option>
+        <option [disabled]="isInactive">suspended</option>
+        <option [disabled]="isInactive">canceled</option>
+        <option [disabled]="isInactive">closed</option>
+      </select>
+    </div>
+
+    <br>
+
+    <h5 for="description">Description: </h5>
+    <div [ngSwitch]="data.dialogMode">
+      <h6 *ngSwitchCase="'readEdit'">{{ vacancyEdit.get('vacancyDescription').value }}</h6>
+      <textarea *ngSwitchCase="'create'" [readonly]='isInactive' id="description" formControlName="vacancyDescription"
+                placeholder="vacancy description" class="materialize-textarea"></textarea>
+    </div>
+
+    <br>
+      <div [ngSwitch]="data.dialogMode">
+        <div *ngSwitchCase="'readEdit'">
+          <table class="inline-table">
+            <tr>
+              <td>Requirements:</td>
+              <td>Require:</td>
+              <td>Public:</td>
+            </tr>
+            <ng-container formArrayName="requirements"
+                          *ngFor="let item of vacancyEdit.get('requirements').controls; let i = index;">
+              <tr [formGroupName]="i">
+                <td><h6>{{ vacancyEdit.get('requirements').controls[i].controls.reqName.value }}</h6></td>
+                <td><input type="checkbox" [readonly]='isInactive' class="qwe" formControlName="isRequire"></td>
+                <td><input type="checkbox" [readonly]='isInactive' class="qwe" formControlName="isPublic"></td>
+              </tr>
+            </ng-container>
+          </table>
+        </div>
+
+        <div *ngSwitchCase="'create'">
+          <table class="inline-table">
+            <tr>
+              <td>Requirements:</td>
+              <td>Require:</td>
+              <td>Public:</td>
+            </tr>
+            <ng-container formArrayName="requirements"
+                          *ngFor="let item of vacancyEdit.get('requirements').controls; let i = index;">
+              <tr [formGroupName]="i">
+                <td><input type="text" [readonly]='isInactive' class="input-group-text reqInput" formControlName="reqName"/></td>
+                <td><input type="checkbox" [readonly]='isInactive' class="qwe" formControlName="isRequire"></td>
+                <td><input type="checkbox" [readonly]='isInactive' class="qwe" formControlName="isPublic"></td>
+              </tr>
+            </ng-container>
+          </table>
+        </div>
+      </div>
+
+    <ng-container *ngIf="!isInactive">
+      <button class="input-group-text reqButton" (click)="addRequirement()">+</button><br>
+    </ng-container>
+
+    <div *ngIf="data.dialogTitle == 'Vacancy info' && data.vacancy.candidates.length">
+      <h5>Candidates:</h5>
+      <div class="candidates-table">
+        <div *ngFor="let item of data.vacancy.candidates" class="col-xs-8 col-xs-offset-2 card">
+          <form>
+            <table border="0" cellpadding="10">
+              <tr>
+                <td rowspan="3" class="img-cell">
+                  <img src="{{ item.photo }}">
+                </td>
+                <td class="small-cell">
+                  <div class="form-row">
+                    <div class="col">
+                      <h6>{{ item.candidateName }}</h6>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="small-cell">
+                  <div class="form-row">
+                    <div class="col">
+                      <label>{{ item.phone }}</label>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="!isInactive">
+      <button class="input-group-text" (click)="onSave()">Save</button>
+    </ng-container>
+
+    <ng-container *ngIf="isInactive">
+      <button class="input-group-text" (click)="isInactive = false; data.dialogMode = 'create'; data.dialogTitle = 'Edit vacancy'">Edit</button>
+    </ng-container>
+  </form>
+</div>

@@ -1,0 +1,20 @@
+button {
+  margin: 10px;
+  background-color: #ee6e73;
+  border-color: #ee6e73;
+}
+
+button:hover {
+  background-color: #ee6e73;
+  border-color: #ee6e73;
+}
+
+button:active {
+  background-color: #ee6e73;
+  border-color: #ee6e73;
+}
+
+button:focus {
+  background-color: #ee6e73;
+  border-color: #ee6e73;
+}

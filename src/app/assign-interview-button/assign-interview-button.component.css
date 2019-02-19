@@ -1,0 +1,12 @@
+button {
+  background-color: #ee6e73;
+  border-color: #ee6e73;
+  margin: 10px;
+}
+
+button:hover,
+:active,
+:focus {
+  background-color: #ee6e73;
+  border-color: #ee6e73;
+}

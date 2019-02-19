@@ -1,0 +1,32 @@
+.row {
+  width: 120%;
+  height: 2.5em;
+  margin-left: 0.5em;
+}
+
+.view-mode {
+  width: 120%;
+  margin-left: 8%;
+}
+
+input {
+  line-height: 1em;
+}
+
+button {
+  color: white;
+  margin: 1.5em 1em;
+  margin-bottom: 30px;
+}
+
+input.ng-touched.ng-invalid{
+  border-color: red;
+}
+
+select {
+  display: inherit;
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid darkgray;
+  outline: none;
+}

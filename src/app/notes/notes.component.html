@@ -1,0 +1,6 @@
+<div *ngIf="isShow">
+<textarea autofocus rows="4" [(ngModel)]="newNote"></textarea>
+<button (click)="addNote(newNote); newNote = ''">Save</button>
+</div>
+
+<p *ngFor="let note of notes">{{note}}</p>

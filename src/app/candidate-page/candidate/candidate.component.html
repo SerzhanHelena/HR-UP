@@ -1,0 +1,17 @@
+<div class="main">
+
+  <div class = holder>
+    <div class="candidate-info">
+      <app-photo [candidatePhoto]="photo" [mode]="mode"></app-photo>
+      <app-desc [candidateData]="data" [mode]="mode"></app-desc>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <app-assign-interview-button (myEvent)="com.refreshing()"  [personId]="personId"></app-assign-interview-button>
+    <app-app-add-experience-info-button  (infoEvent)="com.refreshing()" [personId]="personId"></app-app-add-experience-info-button>
+    <app-add-note-button  (infoEvent)="com.refreshing()" [personId]="personId" ></app-add-note-button>
+    <app-time-line-list #com [personId]="personId"></app-time-line-list>
+  </div>
+
+</div>

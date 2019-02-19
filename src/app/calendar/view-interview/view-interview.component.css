@@ -1,0 +1,13 @@
+
+
+.candidate-header-image {
+  /*background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');*/
+  background-size: cover;
+}
+.interview-items-title{
+  font-size: 20px;
+  font-weight: bold;
+}
+.interview-items{
+  font-size: 22px;
+}

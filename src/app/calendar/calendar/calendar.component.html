@@ -1,0 +1,137 @@
+<div class="row text-center">
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="activeDayIsOpen = false">
+        Previous
+      </div>
+      <div
+        class="btn btn-outline-secondary"
+        mwlCalendarToday
+        [(viewDate)]="viewDate">
+        Today
+      </div>
+      <div
+        class="btn btn-primary"
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="activeDayIsOpen = false">
+        Next
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+  </div>
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        (click)="view = CalendarView.Month"
+        [class.active]="view === CalendarView.Month">
+        Month
+      </div>
+      <div
+        class="btn btn-primary"
+        (click)="view = CalendarView.Week"
+        [class.active]="view === CalendarView.Week">
+        Week
+      </div>
+      <div>
+        <button
+          class="btn btn-primary pull-right"
+          (click)="openDialog()">
+          Add interview
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div [ngSwitch]="view">
+  <ng-template
+      #customCellTemplate
+      let-day="day" let-locale="locale"
+      let-highlightDay="highlightDay"
+      let-unhighlightDay="unhighlightDay"
+      let-tooltipPlacement="tooltipPlacement"
+      let-eventClicked="eventClicked"
+      let-tooltipTemplate="tooltipTemplate"
+      let-tooltipAppendToBody="tooltipAppendToBody">
+    <div class="cal-cell-top" (click)="openDialog(day.date, null)">
+      <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
+      <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+    </div>
+    <div class="cell-template" *ngIf="day.events.length > 0">
+      <div >
+      <div  class="show-events"
+           *ngFor="let event of day.events"
+           mwlDraggable
+           [class.cal-draggable]="event.draggable"
+           dragActiveClass="cal-drag-active"
+           (mouseenter)="highlightDay.emit({event: event})"
+           (mouseleave)="unhighlightDay.emit({event: event})"
+           [dropData]="{event: event}"
+           [dragAxis]="{x: event.draggable, y: event.draggable}">
+       <div (click)="showEvent(event.id)"> {{event.title}} <b>{{event.start | date : 'HH:mm'}}</b></div>
+        <button  class="edit-button" (click)="handleEvent(event)"><i class="fas fa-pen"></i></button>
+        <button  class="delete-button" (click)="deleteEvents(event.id)"><i class="fas fa-trash-alt"></i></button>
+      </div>
+    </div>
+    </div>
+  </ng-template>
+
+  <mwl-calendar-month-view
+    *ngSwitchCase="CalendarView.Month"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [activeDayIsOpen]="activeDayIsOpen"
+    (eventTimesChanged)="eventTimesChanged($event)"
+    [cellTemplate]="customCellTemplate"
+    [weekStartsOn]="1">
+  </mwl-calendar-month-view>
+
+  <ng-template #weekTemplate let-weekEvent="weekEvent">
+<div class="cell-template">
+    <div >
+      <div class="show-events cal-event"
+           mwlDraggable
+           [mwlCalendarTooltip]="!tooltipDisabled ? (weekEvent.event.title | calendarEventTitle:'weekTooltip':weekEvent.event) : ''"
+           mwlDroppable
+           dragActiveClass="cal-drag-active"
+           [dropData]="{event: weekEvent.event, isInternal: true}"
+           [dragSnapGrid]="snapDraggedEvents ? {x: dayColumnWidth + 0.5, y: eventSnapSize || hourSegmentHeight} : {}"
+           [ghostDragEnabled]="false"
+           [validateDrag]="snapDraggedEvents ? validateDrag : false">
+        <div (click)="showEvent(weekEvent.event.id)">{{weekEvent.event.title}}<b>{{weekEvent.event.start | date: 'HH:mm'}}</b></div>
+        <button  class="edit-button" (click)="handleEvent(weekEvent.event)"><i class="fas fa-pen"></i></button>
+        <button  class="delete-button" (click)="deleteEvents(weekEvent.event.id)"><i class="fas fa-trash-alt"></i></button>
+      </div>
+    </div>
+</div>
+  </ng-template>
+
+  <mwl-calendar-week-view
+    *ngSwitchCase="CalendarView.Week"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [weekStartsOn]="1"
+    [dayStartHour]="8"
+    [dayEndHour]="22"
+    (eventTimesChanged)="eventTimesChanged($event)"
+    [eventTemplate]="weekTemplate">
+  </mwl-calendar-week-view>
+
+</div>
+<p-confirmDialog   header="Confirmation" icon="pi pi-exclamation-triangle" appendTo="body" >
+</p-confirmDialog>
+
+

@@ -1,0 +1,12 @@
+nav {
+  background-color: #4db6ac;
+}
+
+.brand-logo {
+  padding-left: 2em;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+}

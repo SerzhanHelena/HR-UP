@@ -1,0 +1,21 @@
+img {
+  width: 150px;
+  height: 150px;
+  padding: 5px;
+  margin-left: -10px;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+
+  background-color:transparent;
+  background-position:center;
+  border:none;
+  background-size: 100%;
+
+  box-shadow: none;
+}

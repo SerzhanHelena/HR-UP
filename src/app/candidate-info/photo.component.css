@@ -1,0 +1,27 @@
+.photo {
+  cursor: pointer;
+  text-align: center;
+
+  width: 200px;
+  height: 200px;
+  padding: 5px;
+  margin-left: 15px;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+
+  background: transparent url("../../assets/icons/face.svg") center;
+  border:none;
+  background-size: 100%;
+
+  box-shadow: none;
+}
+
+input {
+  border: none;
+}

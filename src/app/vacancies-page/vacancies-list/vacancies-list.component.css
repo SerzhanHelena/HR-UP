@@ -1,0 +1,145 @@
+/*.filter {*/
+  /*display: inline-block;*/
+  /*position: absolute;*/
+  /*width: 20%;*/
+  /*left: 3%;*/
+  /*top: 17%;*/
+  /*padding-left: 1em;*/
+/*}*/
+
+.card-list {
+  width: 80%;
+  padding-right: 1em;
+}
+
+label {
+  display: block;
+}
+
+/*table {*/
+  /*padding: 0.5em 1em;*/
+/*}*/
+
+tr {
+  border: none;
+}
+
+.main-table {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.qwe {
+  transform:scale(1.5);
+  opacity:1;
+  cursor:pointer;
+  pointer-events: auto;
+}
+
+.status-table-item {
+  width: 25px;
+  height: 10px;
+}
+
+.card {
+  display: inline-block;
+  box-shadow: none;
+  border-radius: 10px;
+  padding: 0 10px;
+  margin: 10px 3%;
+  width: 42%;
+  height: 100px;
+}
+.add-vacancy-card {
+  display: inline-block;
+  box-shadow: none;
+  border-radius: 10px;
+  padding: 0 10px;
+  margin: 10px 3%;
+  width: 42%;
+  height: 100px;
+}
+
+.button-cell {
+  width: 25%;
+}
+
+.add-vacancy-small-cell {
+  width: 55%;
+}
+
+.add-vacancy-label {
+  margin-left: 7%;
+}
+
+.small-cell {
+  width: 75%;
+  padding: 0;
+  line-height: 1em;
+}
+
+td .small-cell {
+  height: 40px;
+}
+
+button {
+  background: 0 0;
+  border: none;
+  border-radius: 2px;
+  color: #ffffff;
+  position: relative;
+  height: 36px;
+  margin: 0;
+  min-width: 64px;
+  padding: 0 8px;
+  horiz-align: right;
+  display: inline-block;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  overflow: hidden;
+  will-change: box-shadow;
+  transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  line-height: 36px;
+  vertical-align: middle;
+}
+
+button.icon {
+  border-radius: 50%;
+  color: #757575;
+  font-size: 24px;
+  height: 40px;
+  margin-left: 0;
+  margin-right: 0;
+  min-width: 40px;
+  width: 40px;
+  padding: 0;
+  overflow: hidden;
+  line-height: normal;
+}
+
+button.add:hover {
+  background-color: rgba(158,158,158,.2);
+}
+
+button.add:active {
+  background-color: rgba(158,158,158,.4);
+}
+
+button.icon .material-icons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-12px,-12px);
+  transform: translate(-12px,-12px);
+  line-height: 24px;
+  width: 24px;
+  vertical-align: middle;
+}

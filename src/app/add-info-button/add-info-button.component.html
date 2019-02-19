@@ -1,0 +1,8 @@
+<div [className] = " shown == 1 ? 'shown' : 'hidden'">
+        <input type="text" class="form-control" [(ngModel)]="inputText">
+        <!--<button (click)="hideInput()">Save</button>-->
+</div>
+
+<div [className] = " shown == 0 ? 'shown' : 'hidden'">
+<button (click)="showInput()" class="edit"></button>
+</div>

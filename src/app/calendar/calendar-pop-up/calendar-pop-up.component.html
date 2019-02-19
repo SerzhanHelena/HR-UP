@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Interview</h1>
+<div mat-dialog-content>
+  <!--<select2 id="applicantSelect"  [data]="applicants" (valueChanged)="changed($event)"  [width]=800 [cssImport]="true" ></select2>-->
+  <tag-input  id="applicantSelect" (onAdd)="changed($event)" [maxItems]="1" [ngModel]="[findName]" secondaryPlaceholder="Enter a name">
+    <tag-input-dropdown [autocompleteItems]="applicants">
+    </tag-input-dropdown>
+  </tag-input>
+  <br>
+  <mat-form-field >
+    <input matInput [(ngModel)]="selectedSurname"  placeholder="surname">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput  [(ngModel)]="selectedPosition" class="input" placeholder="position">
+  </mat-form-field>
+  <br>
+  <tag-input id="interviewerSelect"  [maxItems]="3" [(ngModel)]="interviewers" [clearOnBlur]="true" placeholder="+ interviewer" secondaryPlaceholder="Enter a interviewer">
+    <tag-input-dropdown [autocompleteItems]="questioners">
+    </tag-input-dropdown>
+  </tag-input>
+<br>
+  <div>date</div>
+  <p-calendar [(ngModel)]="date" dateFormat="dd/mm/yy"  [showIcon]="true" showTime="true"></p-calendar>
+  <br>
+  <div>notes:</div>
+  <textarea [(ngModel)]="selectedNotes" rows="5" cols="105"></textarea>
+  <div mat-dialog-actions>
+    <button mat-raised-button  [mat-dialog-close]="interview" (click)="addInterview()">Save</button>
+    <button mat-raised-button  (click)="onNoClick()">Cancel</button>
+  </div>
+</div>

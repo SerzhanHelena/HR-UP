@@ -1,0 +1,9 @@
+app-add-form {
+  width: 600px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid lightgrey;
+  border-radius: 20px;
+}

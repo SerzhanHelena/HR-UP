@@ -1,0 +1,75 @@
+table {
+  padding: 0.5em 1em;
+}
+
+tr {
+  border: none;
+}
+
+.main-table {
+  display: inline-block;
+  float: left;
+  width: 70%;
+  margin-left: 23%;
+  margin-right: 6%;
+  margin-top: 2%;
+}
+
+.card {
+  display: inline-block;
+  box-shadow: none;
+  border-radius: 10px;
+  padding: 0 10px 0 0;
+  margin: 10px 2%;
+  width: 28.5%;
+}
+
+.btn-cover {
+  display: block;
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+}
+
+img {
+  width: 120px;
+  height: 120px;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+
+  background: transparent center;
+  border:none;
+  background-size:100%;
+
+  box-shadow: none;
+  margin: 5px;
+}
+
+.holder-img {
+  overflow: hidden;
+}
+
+.small-cell,
+.img-cell {
+  padding: 0;
+  line-height: 1em;
+}
+
+td .img-cell {
+  height: 120px;
+}
+
+td .small-cell {
+  height: 40px;
+}
+
+button {
+  outline: none;
+  position: fixed;
+}

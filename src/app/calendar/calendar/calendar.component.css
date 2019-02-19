@@ -1,0 +1,16 @@
+.cell-template {
+  background-color: wheat;
+  font-size: 14px;
+  border-radius: 10px;
+}
+.edit-button,.delete-button {
+  display: none;
+  border: none;
+  background-color: transparent;
+}
+.show-events:hover .edit-button {
+  display: inline-block;
+}
+.show-events:hover .delete-button {
+  display: inline-block;
+}

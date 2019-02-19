@@ -1,0 +1,90 @@
+<div class="main-table">
+  <div *ngIf="!isFilteredArr">
+  <div class="col-xs-8 col-xs-offset-2 card" *ngFor="let item of candidatesService.candidatesList">
+    <form (click)="goToCandidateInfo(item)">
+      <table border="0" cellpadding="10">
+        <tr>
+          <td rowspan="3" class="img-cell holder-img">
+            <a>
+            <img src="{{item.photo}}">
+            </a>
+          </td>
+          <td class="small-cell">
+            <div class="form-row">
+              <div class="col">
+                <label>{{ item.candidateName }}</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="small-cell">
+            <div class="form-row">
+              <div class="col">
+                <label>{{ item.position }}</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="small-cell">
+            <div class="form-row">
+              <div class="col">
+                <label>{{ item.phone }}</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  </div>
+
+  <div *ngIf="isFilteredArr">
+  <div class="col-xs-8 col-xs-offset-2 card" *ngFor="let item of filteredCandidatesArr">
+    <form>
+      <table border="0" cellpadding="10">
+        <tr>
+          <td rowspan="3" class="img-cell holder-img">
+            <img src="{{item.photo}}">
+          </td>
+          <td class="small-cell">
+            <div class="form-row">
+              <div class="col">
+                <label>{{ item.candidateName }}</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="small-cell">
+            <div class="form-row">
+              <div class="col">
+                <label>{{ item.position }}</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="small-cell">
+            <div class="form-row">
+              <div class="col">
+                <label>{{ item.phone }}</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  </div>
+
+<div class="btn-cover">
+  <button class="btn-floating btn-large waves-effect waves-light grey" [routerLink]="['/candidate-page']">
+    <i class="material-icons">add</i>
+  </button>
+</div>

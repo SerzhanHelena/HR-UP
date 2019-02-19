@@ -1,0 +1,11 @@
+<label for="image">
+  <div [ngSwitch]="mode">
+    <div *ngSwitchCase="'view'">
+      <img src="{{ candidatePhoto }}">
+    </div>
+    <div *ngSwitchDefault>
+      <input  type="file" accept=".jpg" id="image" style="display: none;" (change)="openFile($event)" />
+      <img class="photo" id='output'>
+    </div>
+  </div>
+</label>

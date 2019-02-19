@@ -1,0 +1,73 @@
+<div class="main-table">
+  <tr>
+    <td>
+      <div class="filter">
+        <h4>Filter of vacancies:</h4>
+        <form class="filter-form" #positionsForm="ngForm">
+          <br>
+          <label *ngFor="let stat of shownStatuses">
+            <input type="checkbox" (click)="toggle(stat.statusName)"/>
+            <span>{{stat.statusName}}</span>
+            <br>
+          </label>
+          <br>
+          <button class="waves-effect waves-light btn" (click)="statusToShow()">Apply</button>
+          <br><br>
+          <button class="waves-effect waves-light btn" (click)="reset()">Reset</button>
+        </form>
+      </div>
+    </td>
+
+    <td class="card-list">
+      <div class="col-xs-8 col-xs-offset-2" class="card" *ngFor="let item of vacancies; let i = index;">
+        <form>
+          <table border="0" cellpadding="10">
+            <tr>
+              <td class="small-cell">
+                <div class="form-row">
+                  <div class="col">
+                    <h4>{{ item.vacancyName }}</h4>
+                  </div>
+                </div>
+              </td>
+              <td class="button-cell">
+                <button (click)="openDialog('Vacancy info', 'readEdit', i)" class="btn btn-small">More info</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="small-cell">
+                <div class="form-row">
+                  <div class="col">
+                    <label>Vacancy status: {{ item.vacancyStatus }}</label>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+
+      <div class="col-xs-8 col-xs-offset-2" class="add-vacancy-card">
+        <form>
+          <table border="0" cellpadding="10">
+            <tr>
+              <td class="add-vacancy-small-cell">
+                <div class="form-row">
+                  <div class="col add-vac">
+                    <h4 class="add-vacancy-label">Add new vacancy</h4>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <button class="add icon" (click)="openDialog('Add new vacancy', 'create', -1)">
+                  <i class="material-icons">add</i>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </td>
+  </tr>
+</div>
